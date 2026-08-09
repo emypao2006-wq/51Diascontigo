@@ -1,0 +1,714 @@
+
+:root{
+  --wine:#471c29; --wine2:#6b2a3c; --cream:#f7efe9; --paper:#fffaf6;
+  --rose:#d9a8af; --ink:#2e2326; --muted:#78676b; --gold:#c99a68;
+  --shadow:0 22px 65px rgba(66,28,39,.15);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:
+  radial-gradient(circle at 10% 8%,rgba(217,168,175,.23),transparent 26%),
+  radial-gradient(circle at 90% 28%,rgba(201,154,104,.14),transparent 25%),
+  var(--cream);color:var(--ink);font-family:"DM Sans",sans-serif
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.55;
+  background-image:linear-gradient(rgba(71,28,41,.025) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(71,28,41,.025) 1px,transparent 1px);
+  background-size:26px 26px
+}
+.shell{width:min(1000px,100%);margin:auto}
+.hero{min-height:95vh;padding:70px 22px;display:flex;flex-direction:column;justify-content:center;text-align:center}
+.eyebrow,.heading>span,.day-chip{font-size:.72rem;letter-spacing:.22em;font-weight:700;color:var(--wine2)}
+h1,h2,h3{font-family:"Playfair Display",Georgia,serif;margin:0}
+h1{font-size:clamp(3.6rem,12vw,7.5rem);line-height:.86;margin:18px 0 25px}
+h1 em{font-weight:600;color:var(--wine2)}
+.hero>p{max-width:610px;margin:0 auto;color:var(--muted);line-height:1.75;font-size:1.05rem}
+.status{width:min(520px,100%);margin:34px auto 0;padding:20px;background:rgba(255,250,246,.86);border:1px solid rgba(71,28,41,.1);border-radius:23px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
+.status small{display:block;color:var(--muted);font-size:.74rem;margin-bottom:4px}
+.status strong{color:var(--wine);font-size:1.25rem}.status>span{width:1px;height:42px;background:rgba(71,28,41,.14)}
+button{font:inherit}
+.main-btn,.modal button{border:0;border-radius:999px;cursor:pointer;font-weight:700}
+.main-btn{margin:28px auto 0;background:var(--wine);color:#fff;padding:15px 23px;box-shadow:0 12px 30px rgba(71,28,41,.25)}
+.calendar-section{padding:80px 20px}
+.heading{text-align:center;max-width:680px;margin:0 auto 34px}
+.heading h2{font-size:clamp(2.1rem,7vw,4rem);margin:9px 0}
+.heading p{color:var(--muted);line-height:1.65}
+.days-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:11px}
+.day-button{aspect-ratio:1;border:1px solid rgba(71,28,41,.1);background:rgba(255,250,246,.88);border-radius:17px;cursor:pointer;box-shadow:0 8px 22px rgba(71,28,41,.06);position:relative;transition:.2s ease}
+.day-button:hover{transform:translateY(-3px)}
+.day-button strong{font-family:"Playfair Display",Georgia,serif;font-size:1.22rem}
+.day-button small{display:block;color:var(--muted);font-size:.58rem;margin-top:3px}
+.day-button.locked{opacity:.55}.day-button.locked:after{content:"🔒";position:absolute;right:7px;top:6px;font-size:.65rem}
+.day-button.available{background:var(--wine);color:#fff}.day-button.available small{color:#ead6da}
+.day-button.today{outline:2px solid var(--gold);outline-offset:2px}
+.day-view{padding:30px 20px 80px}.hidden{display:none!important}
+.back-btn{border:0;background:transparent;color:var(--wine2);font-weight:700;margin-bottom:18px;cursor:pointer}
+.experience-card,.puzzle-card{max-width:780px;margin:0 auto 24px;border:1px solid rgba(71,28,41,.1);background:var(--paper);border-radius:28px;box-shadow:var(--shadow)}
+.experience-card{padding:38px 30px;text-align:center}
+.experience-card h2{font-size:clamp(2.3rem,8vw,4.3rem);margin:8px 0}
+.type{color:var(--wine2);font-weight:700}.ornament{margin:20px auto;font-size:1.5rem;color:var(--rose)}
+.dayText{max-width:620px;margin:0 auto;color:var(--muted);line-height:1.8;font-size:1.04rem}
+#specialContent{margin-top:26px}
+.letter{font-family:Georgia,serif;text-align:left;line-height:1.9;background:#fbf4ee;padding:27px;border-radius:20px}
+.quote{background:var(--wine);color:white;padding:26px;border-radius:20px;font-family:"Playfair Display",Georgia,serif;font-size:1.35rem;line-height:1.55}
+.placeholder{padding:22px;border:1px dashed rgba(71,28,41,.25);border-radius:18px;color:var(--muted);background:#fdf7f2}
+.coupon{padding:28px;border:2px dashed var(--wine2);border-radius:20px;background:#fff5f5;font-family:"Playfair Display",Georgia,serif;font-size:1.45rem}
+.piece-note{display:flex;gap:13px;align-items:center;text-align:left;background:#f2e6e4;padding:16px 18px;border-radius:18px;margin-top:28px}
+.piece-note span{font-size:1.7rem}.piece-note p{margin:3px 0 0;color:var(--muted);font-size:.9rem}
+.puzzle-card{padding:28px}.heading.mini{margin-bottom:20px}.heading.mini h3{font-size:2rem;margin-top:7px}
+.puzzle-frame{width:min(900px,100%);aspect-ratio:16/9;margin:auto;position:relative;overflow:hidden;border-radius:22px;background:#e7dbd3;box-shadow:0 15px 35px rgba(47,36,38,.16)}
+.puzzle-frame img{width:100%;height:100%;object-fit:cover;display:block}.puzzle-overlay{position:absolute;inset:0}
+.cover-piece{position:absolute;background:#471c29;border:1px solid rgba(255,255,255,.18);transition:.35s ease}.cover-piece.revealed{opacity:0;transform:scale(.94);pointer-events:none}
+footer{text-align:center;color:var(--muted);padding:15px 20px 55px;font-size:.88rem}
+.modal{position:fixed;inset:0;background:rgba(25,14,18,.58);display:grid;place-items:center;padding:20px;backdrop-filter:blur(8px);z-index:50}
+.modal-card{width:min(390px,100%);background:var(--paper);padding:31px;border-radius:28px;text-align:center;box-shadow:0 30px 90px rgba(0,0,0,.3)}
+.modal-card .lock{font-size:2.1rem}.modal-card h3{font-size:1.9rem;margin:10px 0}.modal-card p{color:var(--muted);line-height:1.6}.modal-card button{background:#eadfda;color:var(--wine);padding:12px 18px}
+@media(max-width:680px){.days-grid{grid-template-columns:repeat(5,1fr)}.calendar-section,.day-view{padding-left:15px;padding-right:15px}.experience-card{padding:32px 21px}}
+@media(max-width:410px){.days-grid{grid-template-columns:repeat(4,1fr)}}
+
+
+
+
+/* =========================
+   SOBRE INTERACTIVO - DÍA 1
+   ========================= */
+.envelope-experience{margin-top:22px}
+.envelope-button{
+  display:flex;flex-direction:column;align-items:center;gap:9px;width:100%;
+  border:0;background:transparent;cursor:pointer;color:var(--wine);
+  padding:12px 5px 20px
+}
+.envelope-button>strong{font-size:1.02rem;margin-top:8px}
+.envelope-button>small{color:var(--muted)}
+.envelope{width:245px;height:165px;position:relative;display:block;filter:drop-shadow(0 18px 22px rgba(71,28,41,.18));transition:transform .35s ease}
+.envelope-button:hover .envelope{transform:translateY(-5px) rotate(-1deg)}
+.envelope-shadow{width:190px;height:22px;border-radius:50%;background:rgba(71,28,41,.10);filter:blur(8px);margin-bottom:-7px}
+.envelope-back{position:absolute;inset:0;background:#d8aeb2;border-radius:7px}
+.letter-peek{
+  position:absolute;left:24px;right:24px;top:16px;height:115px;background:#fffaf6;
+  border-radius:6px 6px 2px 2px;display:grid;place-items:center;
+  font-family:"Playfair Display",Georgia,serif;color:var(--wine);font-size:1.15rem;
+  transform:translateY(18px);transition:transform .55s ease .15s;z-index:2
+}
+.envelope-front{
+  position:absolute;inset:0;z-index:4;border-radius:7px;overflow:hidden;
+  background:
+    linear-gradient(32deg,transparent 49%,#c98f97 50%) left bottom/50% 100% no-repeat,
+    linear-gradient(-32deg,transparent 49%,#c98f97 50%) right bottom/50% 100% no-repeat;
+}
+.envelope-flap{
+  position:absolute;left:0;right:0;top:0;height:98px;background:#e5bec2;
+  clip-path:polygon(0 0,100% 0,50% 100%);z-index:5;
+  transform-origin:top;transition:transform .55s ease;backface-visibility:hidden
+}
+.wax{
+  position:absolute;left:50%;top:75px;transform:translate(-50%,-50%);z-index:6;
+  width:43px;height:43px;border-radius:50%;background:var(--wine);color:#fff;
+  display:grid;place-items:center;border:3px solid rgba(255,255,255,.35);
+  box-shadow:0 6px 15px rgba(71,28,41,.22);transition:opacity .2s ease
+}
+.envelope-button.opening .envelope-flap,.envelope-button.opened .envelope-flap{transform:rotateX(180deg);z-index:1}
+.envelope-button.opening .letter-peek,.envelope-button.opened .letter-peek{transform:translateY(-42px)}
+.envelope-button.opening .wax,.envelope-button.opened .wax{opacity:0}
+.envelope-button.opening .envelope{animation:envelope-bounce .85s ease}
+.envelope-button.opened{pointer-events:none;opacity:.42;transform:scale(.93);transition:.4s ease}
+@keyframes envelope-bounce{0%,100%{transform:translateY(0)}45%{transform:translateY(-12px) rotate(1deg)}}
+.day1-letter-wrap{margin-top:16px}
+.day1-letter{position:relative}
+.day1-letter:before{content:"♥";position:absolute;right:22px;top:18px;color:var(--rose);font-size:1.15rem}
+.letter-arrive{animation:letter-arrive .75s ease both}
+@keyframes letter-arrive{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+
+/* =========================
+   PIEZA INTERACTIVA
+   ========================= */
+.puzzle-reveal-button{
+  width:min(520px,100%);margin:0 auto 20px;padding:16px 18px;
+  display:flex;align-items:center;justify-content:center;gap:13px;
+  border:1px solid rgba(71,28,41,.12);border-radius:20px;background:#f7e8e8;
+  color:var(--wine);cursor:pointer;box-shadow:0 10px 25px rgba(71,28,41,.09);
+  transition:transform .2s ease,box-shadow .2s ease,background .2s ease
+}
+.puzzle-reveal-button:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(71,28,41,.14)}
+.puzzle-reveal-button .puzzle-button-icon{font-size:1.8rem;animation:puzzle-wiggle 2.2s ease-in-out infinite}
+.puzzle-reveal-button strong{display:block;font-size:.95rem}
+.puzzle-reveal-button small{display:block;color:var(--muted);font-size:.73rem;margin-top:3px}
+.puzzle-reveal-button.piece-found{background:var(--wine);color:#fff}
+.puzzle-reveal-button.piece-found small{color:#ead8dd}
+@keyframes puzzle-wiggle{0%,100%{transform:rotate(0)}20%{transform:rotate(-8deg)}40%{transform:rotate(7deg)}60%{transform:rotate(0)}}
+.cover-piece[data-piece]{will-change:transform,opacity}
+.cover-piece.discovering{animation:piece-pop .8s cubic-bezier(.2,.8,.2,1)}
+@keyframes piece-pop{0%{transform:scale(1);filter:brightness(1)}45%{transform:scale(.78) rotate(4deg);filter:brightness(1.35)}100%{transform:scale(.9);filter:brightness(1)}}
+.puzzle-sparkles{position:absolute;inset:0;pointer-events:none;z-index:8;overflow:hidden}
+.puzzle-sparkles span{position:absolute;color:#fff;font-size:1.3rem;opacity:0;animation:sparkle-rise 1.1s ease-out forwards;text-shadow:0 3px 10px rgba(71,28,41,.3)}
+@keyframes sparkle-rise{0%{opacity:0;transform:translateY(15px) scale(.5)}25%{opacity:1}100%{opacity:0;transform:translateY(-95px) scale(1.25) rotate(15deg)}}
+
+
+/* =========================
+   ANIMACIÓN DE PIEZA REAL
+   ========================= */
+.puzzle-frame{isolation:isolate}
+.flying-piece{
+  position:absolute;
+  z-index:12;
+  border-radius:14px;
+  box-shadow:0 14px 35px rgba(37,18,24,.32);
+  transform-origin:center;
+  overflow:visible;
+  background-repeat:no-repeat;
+  border:2px solid rgba(255,255,255,.92);
+  pointer-events:none;
+  transition:
+    transform .68s cubic-bezier(.2,.85,.2,1),
+    box-shadow .68s ease,
+    filter .68s ease,
+    opacity .35s ease;
+}
+.flying-piece:before,
+.flying-piece:after{
+  content:"";
+  position:absolute;
+  width:28%;
+  height:28%;
+  border-radius:50%;
+  background:inherit;
+  background-size:inherit;
+  background-position:inherit;
+  border:2px solid rgba(255,255,255,.88);
+  box-sizing:border-box;
+}
+.flying-piece:before{
+  left:36%;
+  top:-14%;
+}
+.flying-piece:after{
+  right:-14%;
+  top:36%;
+}
+.flying-piece-heart{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:26px;height:26px;border-radius:50%;
+  display:grid;place-items:center;
+  background:rgba(71,28,41,.86);
+  color:white;
+  font-size:.75rem;
+  box-shadow:0 6px 16px rgba(71,28,41,.3);
+  z-index:4;
+  opacity:.95
+}
+.flying-piece.lift{
+  transform:translateY(-95px) rotate(-12deg) scale(1.18);
+  box-shadow:0 28px 50px rgba(37,18,24,.38);
+  filter:brightness(1.07) saturate(1.03)
+}
+.flying-piece.place{
+  transform:translateY(-12px) rotate(6deg) scale(1.06);
+  box-shadow:0 20px 42px rgba(37,18,24,.32)
+}
+.flying-piece.settled{
+  transform:translateY(0) rotate(0) scale(1);
+  box-shadow:0 5px 14px rgba(37,18,24,.18);
+  opacity:0
+}
+.puzzle-reveal-button.revealing{
+  transform:scale(.98);
+  opacity:.85;
+  cursor:wait
+}
+
+
+/* Calendario dentro de cada día */
+.day-calendar-card{
+  max-width:780px;
+  margin:0 auto 24px;
+  background:var(--paper);
+  border:1px solid rgba(71,28,41,.1);
+  border-radius:28px;
+  padding:26px;
+  box-shadow:var(--shadow)
+}
+.compact-weekdays,.compact-month-grid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:8px
+}
+.compact-weekdays{margin-bottom:8px}
+.compact-weekdays span{
+  text-align:center;
+  font-size:.67rem;
+  color:var(--muted);
+  font-weight:700
+}
+.day-calendar-card .date-cell{
+  aspect-ratio:1;
+  border-radius:12px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  background:#fbf5f0;
+  border:1px solid rgba(71,28,41,.06);
+  overflow:hidden
+}
+.day-calendar-card .date-cell.empty{background:transparent;border-color:transparent}
+.day-calendar-card .date-cell.outside{opacity:.25;background:transparent;border-color:transparent}
+.day-calendar-card .date-number{
+  font-family:"Playfair Display",Georgia,serif;
+  font-weight:700;
+  font-size:1rem;
+  position:relative;
+  z-index:2
+}
+.day-calendar-card .experience-day{
+  font-size:.47rem;
+  color:var(--muted);
+  margin-top:2px;
+  position:relative;
+  z-index:2
+}
+.day-calendar-card .date-cell.crossed{
+  background:#ead8da;
+  color:var(--wine)
+}
+.day-calendar-card .date-cell.crossed:after{
+  content:"";
+  position:absolute;
+  width:76%;
+  height:2px;
+  background:var(--wine2);
+  transform:rotate(-18deg);
+  border-radius:10px;
+  opacity:.75
+}
+.day-calendar-card .date-cell.calendar-today{
+  background:var(--wine);
+  color:white;
+  transform:scale(1.04);
+  box-shadow:0 8px 20px rgba(71,28,41,.22)
+}
+.day-calendar-card .date-cell.calendar-today .experience-day{color:#efdde1}
+.day-calendar-card .date-cell.calendar-today:before{
+  content:"♥";
+  position:absolute;
+  top:3px;
+  right:5px;
+  font-size:.55rem;
+  color:var(--rose)
+}
+@media(max-width:600px){
+  .day-calendar-card{padding:18px}
+  .compact-weekdays,.compact-month-grid{gap:5px}
+  .day-calendar-card .date-cell{border-radius:9px}
+  .day-calendar-card .date-number{font-size:.9rem}
+  .day-calendar-card .experience-day{font-size:.42rem}
+}
+
+
+
+
+
+/* Foto horizontal SIN recorte: se gira completa 90° */
+.puzzle-frame{
+  width:min(900px,100%) !important;
+  aspect-ratio:4/3 !important;
+  height:auto !important;
+  background:#eadfd8 !important;
+  overflow:hidden !important;
+  position:relative !important;
+}
+
+.puzzle-frame img{
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  width:auto !important;
+  height:100% !important;
+  max-width:none !important;
+  max-height:none !important;
+  object-fit:contain !important;
+  transform:translate(-50%,-50%) rotate(-90deg) !important;
+  transform-origin:center center !important;
+}
+
+/* La capa de piezas cubre todo el marco horizontal */
+.puzzle-overlay{
+  position:absolute !important;
+  inset:0 !important;
+  z-index:2 !important;
+}
+
+
+/* Sorpresa real: las piezas cerradas no dejan ver absolutamente nada de la foto */
+.puzzle-overlay{
+  background:transparent !important;
+  pointer-events:none;
+}
+.cover-piece{
+  background:#471c29 !important;
+  opacity:1 !important;
+  border-color:rgba(255,255,255,.20) !important;
+}
+.cover-piece.revealed{
+  opacity:0 !important;
+  background:transparent !important;
+}
+
+
+/* FIX: al descubrir una pieza, debe verse la foto real debajo */
+.puzzle-overlay{background:transparent !important}
+.puzzle-overlay .cover-piece{
+  background:#471c29 !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  transition:opacity .55s ease, transform .55s ease !important;
+}
+.puzzle-overlay .cover-piece.revealed{
+  opacity:0 !important;
+  visibility:hidden !important;
+  transform:scale(.88) rotate(3deg) !important;
+}
+
+
+/* Rompecabezas más grande */
+.puzzle-card{
+  max-width:1180px !important;
+  padding:34px !important;
+}
+.puzzle-frame{
+  width:min(1080px, 96vw) !important;
+  aspect-ratio:4/3 !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+@media(max-width:700px){
+  .puzzle-card{padding:16px !important}
+  .puzzle-frame{width:100% !important}
+}
+
+/* Centrado del rompecabezas y piezas solo sobre la foto */
+.puzzle-card{
+  max-width:1180px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  text-align:center !important;
+}
+.puzzle-frame{
+  width:auto !important;
+  height:auto !important;
+  aspect-ratio:auto !important;
+  background:transparent !important;
+  overflow:hidden !important;
+  position:relative !important;
+  margin:0 auto !important;
+}
+.puzzle-frame img{
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  transform-origin:center center !important;
+  max-width:none !important;
+  max-height:none !important;
+  object-fit:contain !important;
+}
+.puzzle-overlay{
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+}
+@media(max-width:700px){
+  .puzzle-card{padding:14px !important}
+}
+
+/* FIX DEFINITIVO DEL ROMPECABEZAS
+   Foto original: 828 x 1472.
+   Girada 90°: 1472 x 828, por eso encaja completa en horizontal. */
+.puzzle-card{
+  max-width:1180px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  text-align:center !important;
+}
+.puzzle-frame{
+  width:min(1050px,94vw) !important;
+  aspect-ratio:1472 / 828 !important;
+  height:auto !important;
+  margin:0 auto !important;
+  position:relative !important;
+  overflow:hidden !important;
+  background:transparent !important;
+  display:block !important;
+}
+.puzzle-frame img{
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+
+  /* Antes de rotar, intercambiamos ancho y alto para que,
+     después del giro, la foto ocupe exactamente todo el marco. */
+  width:56.25% !important;
+  height:177.7778% !important;
+
+  transform:translate(-50%,-50%) rotate(-90deg) !important;
+  transform-origin:center center !important;
+
+  max-width:none !important;
+  max-height:none !important;
+  object-fit:fill !important;
+  display:block !important;
+  z-index:1 !important;
+}
+.puzzle-overlay{
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  z-index:3 !important;
+  background:transparent !important;
+  pointer-events:none !important;
+}
+.puzzle-overlay .cover-piece{
+  position:absolute !important;
+  background:#471c29 !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  border:1px solid rgba(255,255,255,.18) !important;
+}
+.puzzle-overlay .cover-piece.revealed{
+  opacity:0 !important;
+  visibility:hidden !important;
+}
+.puzzle-sparkles{
+  z-index:6 !important;
+}
+.flying-piece{
+  z-index:7 !important;
+}
+
+/* Día 2 */
+.day2-experience{margin-top:20px}
+.day2-intro{text-align:center;max-width:600px;margin:0 auto 20px}
+.day2-heart{display:block;color:var(--wine2);font-size:1.55rem;margin-bottom:5px}
+.day2-intro h3{font-size:2rem;margin:0 0 8px}
+.day2-intro p{color:var(--muted);line-height:1.65}
+.memory-reveal-btn{
+  width:min(520px,100%);margin:0 auto;display:flex;flex-direction:column;align-items:center;
+  gap:5px;border:1px solid rgba(71,28,41,.12);background:#f6e7e8;color:var(--wine);
+  padding:19px;border-radius:22px;cursor:pointer;box-shadow:0 10px 26px rgba(71,28,41,.09);
+  transition:.25s ease
+}
+.memory-reveal-btn>span{font-size:1.8rem}
+.memory-reveal-btn strong{font-size:.98rem}
+.memory-reveal-btn small{color:var(--muted)}
+.memory-reveal-btn:hover{transform:translateY(-3px)}
+.memory-reveal-btn.opening{animation:memory-pulse .65s ease}
+.memory-reveal-btn.opened{opacity:.45;pointer-events:none}
+@keyframes memory-pulse{50%{transform:scale(.97)}}
+.memory-card{margin:22px auto 0;max-width:610px}
+.memory-polaroid{
+  background:#fff;padding:16px 16px 24px;border-radius:8px;box-shadow:0 14px 35px rgba(50,25,32,.13);
+  transform:rotate(-1deg)
+}
+.memory-placeholder{
+  min-height:220px;background:linear-gradient(135deg,#efe2df,#f9f2ed);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:25px;border-radius:4px;color:var(--muted)
+}
+.memory-placeholder span{font-size:2rem;color:var(--rose)}
+.memory-placeholder p{max-width:390px;line-height:1.6}
+.memory-polaroid>strong{
+  display:block;margin-top:15px;font-family:"Playfair Display",Georgia,serif;color:var(--wine);font-size:1.25rem
+}
+.memory-note{font-family:Georgia,serif;line-height:1.8;color:var(--muted);margin:18px auto 0;max-width:560px}
+.memory-arrive{animation:memory-arrive .7s ease both}
+@keyframes memory-arrive{from{opacity:0;transform:translateY(25px) rotate(1deg)}to{opacity:1;transform:translateY(0) rotate(0)}}
+
+/* La pieza real aparece primero grande y flotando */
+.flying-piece.lift{
+  transform:translateY(-120px) rotate(-13deg) scale(1.45) !important;
+  box-shadow:0 32px 60px rgba(37,18,24,.42) !important;
+  z-index:15 !important;
+}
+.flying-piece.place{
+  transform:translateY(-18px) rotate(5deg) scale(1.10) !important;
+}
+
+/* FIX fiable de la pieza: usa una copia DOM de la foto, no canvas */
+.real-photo-piece{
+  overflow:hidden !important;
+  background:#f7e8e8 !important;
+  border:2px solid rgba(255,255,255,.95) !important;
+}
+.flying-piece-photo{
+  pointer-events:none !important;
+  z-index:1 !important;
+}
+.real-photo-piece .flying-piece-heart{
+  z-index:3 !important;
+}
+.puzzle-reveal-button.revealing{
+  animation:button-confirm .45s ease;
+}
+@keyframes button-confirm{
+  0%{transform:scale(1)}
+  50%{transform:scale(.96)}
+  100%{transform:scale(1)}
+}
+
+/* La pieza del día no se ve hasta tocar el botón */
+.puzzle-overlay .cover-piece{
+  opacity:1 !important;
+  visibility:visible !important;
+}
+.puzzle-overlay .cover-piece.revealed{
+  opacity:0 !important;
+  visibility:hidden !important;
+}
+
+/* La animación muestra únicamente el fragmento de foto del día */
+.real-photo-piece,
+.flying-piece{
+  overflow:hidden !important;
+  background:transparent !important;
+}
+.single-piece-image{
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  display:block !important;
+  z-index:1 !important;
+}
+.flying-piece-heart{
+  z-index:3 !important;
+}
+
+/* Rendimiento: animación corta y ligera */
+.flying-piece{
+  transition:
+    transform .32s cubic-bezier(.2,.85,.2,1),
+    box-shadow .32s ease,
+    opacity .22s ease !important;
+  will-change:transform,opacity !important;
+}
+.flying-piece.lift{
+  transform:translateY(-80px) rotate(-10deg) scale(1.28) !important;
+}
+.single-piece-image{
+  image-rendering:auto;
+}
+
+/* Pieza instantánea individual: NO revela la foto final */
+.piece-showcase{
+  width:min(520px,100%);
+  margin:18px auto 24px;
+  padding:22px;
+  border-radius:24px;
+  background:#fffaf6;
+  border:1px solid rgba(71,28,41,.12);
+  box-shadow:0 16px 40px rgba(71,28,41,.14);
+  opacity:0;
+  transform:translateY(12px) scale(.96);
+  transition:opacity .22s ease, transform .22s ease;
+}
+.piece-showcase.show{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+.standalone-piece{
+  position:relative;
+  overflow:hidden;
+  margin:0 auto;
+  border-radius:16px;
+  border:3px solid rgba(255,255,255,.95);
+  box-shadow:0 18px 34px rgba(40,20,26,.22);
+  background:#f2e6e4;
+}
+.standalone-piece-photo{
+  pointer-events:none;
+}
+.standalone-piece-heart{
+  position:absolute;
+  right:8px;
+  bottom:8px;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:rgba(71,28,41,.9);
+  color:#fff;
+  font-size:.75rem;
+  z-index:3;
+}
+.piece-showcase-label{
+  text-align:center;
+  margin-top:14px;
+}
+.piece-showcase-label strong{
+  display:block;
+  color:var(--wine);
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:1.2rem;
+}
+.piece-showcase-label small{
+  display:block;
+  margin-top:4px;
+  color:var(--muted);
+}
+
+/* La pieza se muestra y luego viaja hasta el tablero */
+.piece-moving-to-board{
+  transition:
+    left .68s cubic-bezier(.2,.8,.2,1),
+    top .68s cubic-bezier(.2,.8,.2,1),
+    width .68s cubic-bezier(.2,.8,.2,1),
+    height .68s cubic-bezier(.2,.8,.2,1),
+    transform .68s ease,
+    opacity .25s ease !important;
+  box-shadow:0 22px 45px rgba(35,17,22,.35) !important;
+  transform:rotate(-7deg);
+  overflow:hidden;
+  pointer-events:none;
+}
+.piece-moving-to-board.arrived{
+  opacity:.15;
+  box-shadow:none !important;
+}
+.piece-showcase.placing{
+  opacity:.25;
+  transform:scale(.96);
+}
+
+/* Fragmento exacto: la vista previa y la pieza que viaja usan el mismo recorte */
+.exact-piece-photo{
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:fill !important;
+  transform:none !important;
+  max-width:none !important;
+  max-height:none !important;
+}
+
+/* Versión simple: al pulsar se revela directamente la pieza en el tablero */
+.piece-showcase,
+.piece-moving-to-board,
+.flying-piece{
+  display:none !important;
+}
+.puzzle-overlay .cover-piece{
+  transition:opacity .22s ease !important;
+}
+.puzzle-overlay .cover-piece.revealed{
+  opacity:0 !important;
+  visibility:hidden !important;
+}

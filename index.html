@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#3c1824">
+  <title>51 días contigo ♥</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="eyebrow">UN PEDACITO DE MÍ PARA CADA DÍA</div>
+      <h1>51 días<br><em>contigo</em> ♥</h1>
+      <p>Aunque hoy la distancia nos toque un poquito, quería encontrar una forma de seguir acompañándote todos los días.</p>
+      <div class="status">
+        <div><small>Hoy</small><strong id="todayLabel">Día 1</strong></div>
+        <span></span>
+        <div><small>Quedan</small><strong id="remainingLabel">50 días</strong></div>
+      </div>
+      <button id="enterBtn" class="main-btn">Abrir nuestra historia ↓</button>
+    </section>
+
+    <section class="calendar-section" id="calendar">
+      <div class="heading">
+        <span>51 PEQUEÑAS SORPRESAS</span>
+        <h2>Un día a la vez</h2>
+        <p>Los días futuros se quedan cerrados hasta que llegue su momento.</p>
+      </div>
+      <div id="daysGrid" class="days-grid"></div>
+    </section>
+
+    <section id="dayView" class="day-view hidden">
+      <button class="back-btn" id="backBtn">← Volver a los días</button>
+      <article class="experience-card">
+        <div class="day-chip" id="dayChip">DÍA 1</div>
+        <h2 id="dayTitle"></h2>
+        <p class="type" id="dayType"></p>
+        <div class="ornament">♥</div>
+        <p class="dayText" id="dayText"></p>
+        <div id="specialContent"></div>
+      </article>
+
+
+      <div class="day-calendar-card" id="dayCalendarCard">
+        <div class="heading mini">
+          <span>NUESTRA CUENTA REGRESIVA</span>
+          <h3 id="dayCalendarTitle">Agosto 2026</h3>
+          <p id="dayCalendarSubtitle">Cada día que pasa se va tachando ♥</p>
+        </div>
+        <div class="weekdays compact-weekdays">
+          <span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span>
+        </div>
+        <div class="month-grid compact-month-grid" id="dayMonthCalendar"></div>
+      </div>
+
+      <div class="puzzle-card">
+        <div class="heading mini">
+          <span>NUESTRO ROMPECABEZAS</span>
+          <h3>51 días, 51 pedacitos</h3>
+        </div>
+        <button class="puzzle-reveal-button" id="puzzleRevealBtn" type="button">
+          <span class="puzzle-button-icon">🧩</span>
+          <span>
+            <strong>¡Aplasta aquí para descubrir tu pieza de hoy!</strong>
+            <small id="puzzleRevealHint">Hay un pedacito nuevo de nosotros esperando ♥</small>
+          </span>
+        </button>
+
+        <div class="puzzle-frame" id="puzzleFrame">
+          <img src="foto_rompecabezas.jpg" alt="Nuestra foto">
+          <div class="puzzle-overlay" id="puzzleOverlay"></div>
+          <div class="puzzle-sparkles" id="puzzleSparkles" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>Hecho con amor, incluso desde lejos ♥</footer>
+  </main>
+
+  <div id="lockedModal" class="modal hidden">
+    <div class="modal-card">
+      <div class="lock">🔒</div>
+      <h3>Todavía no, tramposo 👀</h3>
+      <p id="lockedMessage">Este día aún no se puede abrir.</p>
+      <button id="closeModal">Prometo esperar ♥</button>
+    </div>
+  </div>
+
+  <script src="days.js"></script>
+  <script src="script.js"></script>
+
+  <div class="preview-panel hidden" id="previewPanel">
+    <strong>Modo prueba</strong>
+    <label>
+      Ver día
+      <select id="previewDaySelect"></select>
+    </label>
+    <button id="resetPreviewBtn" type="button">Reiniciar pruebas</button>
+    <small>Este panel solo aparece en tu enlace de prueba.</small>
+  </div>
+
+</body>
+</html>
